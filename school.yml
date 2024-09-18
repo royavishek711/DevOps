@@ -1,0 +1,8 @@
+---
+School:
+- name: DAV
+  principal: "Avishek"
+  Students:
+  - roll: 13
+  - name: rimon
+  - marks: 90

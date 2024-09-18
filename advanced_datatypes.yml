@@ -1,0 +1,87 @@
+student: !!seq
+ -marks
+ -roll
+ -subject
+
+cities: [delhi, kolkata]
+
+# some of the keys of the seq may be empty
+# sparse seq
+sparse seq:
+ - hey
+ - how
+ - are
+ - you
+ - 
+ - Null
+ - good
+
+# nested seq
+
+ - 
+  - tree
+  - car
+  - glass
+ -
+  - good
+  - bad
+  - not bad
+ -
+
+#key: values pair are called maps
+# !!maps
+
+# nested mappings
+name: Avishek
+role:
+  age: 18
+  job: SDE
+# above is same as following
+name2: Avishek
+role2: {age: 18, job: SDE}
+
+# keys may have dup values
+# !!pairs
+pair examples: !!pairs
+  - job: student
+  - role: dev
+# this will be an array of hash tables
+# above is same as following
+pair examples2: !!pairs [job: student, role: dev]
+
+# !!set will allow you to have unique values
+names: !!set
+ ? kunal
+ ? avishek
+ ? rimon
+
+# dictionary !!omap
+people: !!omap
+  - kunal:
+      name: kunal
+      age: 20
+      role: dev
+  - rimon:
+      name: rimon
+      age: 21
+      role: jr. dev
+
+# reusing some properties using anchors
+likes: &base
+  bike: bullet
+  fav fruit: mango
+  
+person1:
+  name: rimon
+  <<: *likes
+
+person2:
+  name: kunal
+  <<: *likes
+  bike: ninja #override bike
+
+person3:
+  name: avishek
+  <<: *likes
+  fav fruit: orange #override fav fruit
+
